@@ -4,31 +4,26 @@ class Discounts
 
 	def initialize
 		@discount_list = {
-			:apple => {
-				threshold: 2,
-				discount_price: 5,
-				_max: 0
-			},
-			:pear => {
-				threshold: 2,
-				discount_price: 7.5,
-				_max: 0
-			},
-			:banana => {
-				threshold: 0,
-				discount_price: 15,
-				_max: 0
-			},
-			:pineapple => {
-				threshold: 1,
-				discount_price: 50,
-				_max: 1
-			},
-			:mango => {
-				threshold: 3,
-				discount_price: 133.33,
-				_max: 0
-			}
+			:apple => Item.new(2, 5, 0),
+			:pear => Item.new(2, 7.5, 0),
+			:banana => Item.new(0, 15, 0),
+			:pineapple => Item.new(1, 50, 1),
+			:mango => Item.new(3, 133.33, 0)
 		}
 	end
+end
+
+class Item
+	attr_accessor :threshold,:discount_price,:_max
+
+	:threshold
+	:discount_price
+	:_max
+
+	def initialize(threshold, price, _max)
+		@threshold = threshold
+		@discount_price = price
+		@_max = _max
+	end
+
 end
