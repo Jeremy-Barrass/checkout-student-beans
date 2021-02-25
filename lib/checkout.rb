@@ -15,8 +15,10 @@ class Checkout
 
     basket.inject(Hash.new(0)) { |items, item| items[item] += 1; items }.each do |item, count|
       if item == :apple || item == :pear
-        if (count % 2 == 0)
-          total += prices.fetch(item) * (count / 2)
+        if (count >= 2)
+          leftover = count % 2
+          total += prices.fetch(item) * ((count - leftover) / 2)
+          total += prices.fetch(item) * leftover
         else
           total += prices.fetch(item) * count
         end
