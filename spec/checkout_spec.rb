@@ -46,6 +46,16 @@ RSpec.describe Checkout do
         it 'returns the correctly discounted price for the basket' do
           expect(total).to eq(30)
         end
+              
+        context 'and there is a third apple' do
+          before do
+            checkout.scan(:apple)
+          end
+
+          it 'returns the correctly discounted price for the basket' do
+            expect(total).to eq(40)
+          end
+        end
       end
     end
 
