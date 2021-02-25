@@ -12,5 +12,7 @@ class Discounts
 		}
 	end
 
-	Item = Struct.new(:activation_threshold, :discount_price, :maximum_available_on_discount)
+	Item = Struct.new(:activation_threshold,
+		:discount_price,
+		:maximum_available_on_discount)
 end
