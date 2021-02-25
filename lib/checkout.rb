@@ -22,9 +22,11 @@ class Checkout
         _max = discounts[item]._max
 
         leftover = _min > 0 ? count % _min : _min
+        leftover += _max > 0 && count > _max ? count - _max : 0
+
         eligible_amount = count - leftover
 
-        valid = [_max, eligible_amount].max
+        valid = _max > 0 && eligible_amount > _max ? _max : eligible_amount
 
         if valid >= _min 
           total += price * valid
