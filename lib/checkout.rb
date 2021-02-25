@@ -17,19 +17,19 @@ class Checkout
 
     basket.inject(Hash.new(0)) { |items, item| items[item] += 1; items }.each do |item, count|
       if discounts.key?(item)
-        _min = discounts[item].threshold
+        _min = discounts[item].activation_threshold
         price = discounts[item].discount_price
-        _max = discounts[item]._max
+        _max = discounts[item].maximum_available_on_discount
 
         leftover_item = _min > 0 ? count % _min : _min
         leftover_item += _max > 0 && count > _max ? count - _max : 0
 
-        eligible_item = count - leftover_item
+        eligible_discount_item = count - leftover_item
 
-        valid = _max > 0 && eligible_item > _max ? _max : eligible_item
+        valid_discount_item = _max > 0 && eligible_discount_item > _max ? _max : eligible_discount_item
 
-        if valid >= _min 
-          total += (price * valid).round(1)
+        if valid_discount_item >= _min 
+          total += (price * valid_discount_item).round(1)
         end
 
         total += prices.fetch(item) * leftover_item

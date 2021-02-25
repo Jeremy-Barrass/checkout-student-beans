@@ -11,19 +11,6 @@ class Discounts
 			:mango => Item.new(3, 133.33, 0)
 		}
 	end
-end
 
-class Item
-	attr_accessor :threshold,:discount_price,:_max
-
-	:threshold
-	:discount_price
-	:_max
-
-	def initialize(threshold, price, _max)
-		@threshold = threshold
-		@discount_price = price
-		@_max = _max
-	end
-
+	Item = Struct.new(:activation_threshold, :discount_price, :maximum_available_on_discount)
 end
