@@ -29,7 +29,7 @@ class Checkout
         valid = _max > 0 && eligible_amount > _max ? _max : eligible_amount
 
         if valid >= _min 
-          total += price * valid
+          total += (price * valid).round(1)
         end
 
         total += prices.fetch(item) * leftover
@@ -47,26 +47,3 @@ class Checkout
     @basket ||= Array.new
   end
 end
-
-      # if item == :apple || item == :pear
-      #   if (count >= 2)
-      #     leftover = count % 2
-      #     total += prices.fetch(item) * ((count - leftover) / 2)
-      #     total += prices.fetch(item) * leftover
-      #   else
-      #     total += prices.fetch(item) * count
-      #   end
-      # elsif item == :banana || item == :pineapple
-      #   if item == :pineapple
-      #     total += (prices.fetch(item) / 2)
-      #     total += (prices.fetch(item)) * (count - 1)
-      #   else
-      #     total += (prices.fetch(item) / 2) * count
-      #   end
-      # elsif item == :mango
-      #   if count >= 3
-      #    total += (prices.fetch(item)) * (count - 1)
-      #   end
-      # else
-      #   total += prices.fetch(item) * count
-      # end
