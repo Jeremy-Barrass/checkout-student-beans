@@ -15,7 +15,24 @@ class Checkout
     total = 0
 
     basket.inject(Hash.new(0)) { |items, item| items[item] += 1; items }.each do |item, count|
-      
+      if discounts.key?(item)
+        _min = discounts[item].threshold
+        price = discounts[item].discount_price
+        _max = discounts[item]._max
+
+        leftover = count % _min
+        eligible_amount = count - leftover
+
+        valid = max { |_max, eligible_amount|  }
+
+        if valid >= min 
+          total += price * valid
+        end
+
+        total += prices.fetch(item) * leftover
+      else
+        total += prices.fetch(item) * count
+      end
     end
 
     total

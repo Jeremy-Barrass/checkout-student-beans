@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'checkout'
+require 'discounts'
 
 RSpec.describe Checkout do
   describe '#total' do
@@ -17,7 +18,7 @@ RSpec.describe Checkout do
       }
     }
     let(:discount_rules) {
-      {}
+      Discounts.new.discount_list
     }
 
     context 'when no offers apply' do
