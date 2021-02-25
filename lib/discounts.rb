@@ -4,27 +4,27 @@ class Discounts
 
 	def initialize
 		@discount_list = {
-			:apples => {
+			:apple => {
 				threshold: 2,
 				discount_price: 5,
 				_max: 0
 			},
-			:pears => {
+			:pear => {
 				threshold: 2,
 				discount_price: 7.5,
 				_max: 0
 			},
-			:bananas => {
+			:banana => {
 				threshold: 0,
 				discount_price: 15,
 				_max: 0
 			},
-			:pineapples => {
+			:pineapple => {
 				threshold: 1,
 				discount_price: 50,
 				_max: 1
 			},
-			:mangos => {
+			:mango => {
 				threshold: 3,
 				discount_price: 133.33,
 				_max: 0
