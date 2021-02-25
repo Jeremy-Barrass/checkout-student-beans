@@ -1,6 +1,7 @@
 class Checkout
-  attr_reader :prices
+  attr_reader :prices,:discounts
   private :prices
+  private :discounts
 
   def initialize(prices, discounts)
     @prices = prices
