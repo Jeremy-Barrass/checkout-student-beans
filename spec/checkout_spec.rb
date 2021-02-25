@@ -81,6 +81,16 @@ RSpec.describe Checkout do
         it 'returns the correctly discounted price for the basket' do
           expect(total).to eq(30)
         end
+
+        context 'and there is a third pear' do
+          before do
+            checkout.scan(:pear)
+          end
+
+          it 'returns the correctly discounted price for the basket' do
+            expect(total).to eq(45)
+          end
+        end
       end
     end
 
@@ -91,6 +101,16 @@ RSpec.describe Checkout do
 
       it 'returns the discounted price for the basket' do
         expect(total).to eq(15)
+      end
+
+      context 'when there are other items' do
+        before do
+          checkout.scan(:pear)
+        end
+
+        it 'returns the correctly discounted price for the basket' do
+          expect(total).to eq(30)
+        end
       end
     end
 
@@ -103,6 +123,17 @@ RSpec.describe Checkout do
       it 'returns the discounted price for the basket' do
         expect(total).to eq(150)
       end
+
+      context 'when there are other items' do
+        before do
+          checkout.scan(:pear)
+        end
+
+        it 'returns the correctly discounted price for the basket' do
+          expect(total).to eq(165)
+        end
+      end
+
     end
 
     context 'when a buy 3 get 1 free offer applies to mangos' do
@@ -112,6 +143,16 @@ RSpec.describe Checkout do
 
       it 'returns the discounted price for the basket' do
         expect(total).to eq(600)
+      end
+
+      context 'when there are other items' do
+        before do
+          checkout.scan(:pear)
+        end
+
+        it 'returns the correctly discounted price for the basket' do
+          expect(total).to eq(615)
+        end
       end
     end
   end
