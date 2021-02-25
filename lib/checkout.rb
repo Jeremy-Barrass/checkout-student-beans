@@ -21,18 +21,18 @@ class Checkout
         price = discounts[item].discount_price
         _max = discounts[item]._max
 
-        leftover = _min > 0 ? count % _min : _min
-        leftover += _max > 0 && count > _max ? count - _max : 0
+        leftover_item = _min > 0 ? count % _min : _min
+        leftover_item += _max > 0 && count > _max ? count - _max : 0
 
-        eligible_amount = count - leftover
+        eligible_item = count - leftover_item
 
-        valid = _max > 0 && eligible_amount > _max ? _max : eligible_amount
+        valid = _max > 0 && eligible_item > _max ? _max : eligible_item
 
         if valid >= _min 
           total += (price * valid).round(1)
         end
 
-        total += prices.fetch(item) * leftover
+        total += prices.fetch(item) * leftover_item
       else
         total += prices.fetch(item) * count
       end
